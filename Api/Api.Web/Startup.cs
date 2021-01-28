@@ -42,7 +42,7 @@ namespace Api.Web
             });
 
             services.AddScoped<IUsersStorage, MSsqlUsersStorage>();
-            services.AddScoped<IValidator<UsersContext>>();
+            services.AddScoped<IValidator<UsersContext>, UsersValidator>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
