@@ -14,7 +14,7 @@ namespace Api.Domain
 
         Task<(DomainResult, Guid)> CreateAsync(string name, bool active);
 
-        Task UpdateAsync(Guid id, bool active);
+        Task<Users> UpdateAsync(Guid id, bool active);
 
         Task DeleteAsync(Guid id);
     }
@@ -59,18 +59,18 @@ namespace Api.Domain
             return (DomainResult.Success(), userId);
         }
 
-        public async Task UpdateAsync(Guid id, bool active)
+        public async Task<Users> UpdateAsync(Guid id, bool active)
         {
             var user = await usersStorage.GetByIdAsync(id);
 
             if (user == null)
             {
-                return;
+                return null;
             }
 
             user.Update(active);
 
-            await usersStorage.UpdateAsync(id, user);
+            return await usersStorage.UpdateAsync(id, user);
         }
 
         public async Task DeleteAsync(Guid id)

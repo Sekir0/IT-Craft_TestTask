@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Api.Domain
@@ -13,7 +12,7 @@ namespace Api.Domain
 
         Task<Guid> InsertAsync(Users users);
 
-        Task UpdateAsync(Guid id, Users updatedUsers);
+        Task<Users> UpdateAsync(Guid id, Users updatedUsers);
 
         Task DeleteAsync(Guid id);
     }

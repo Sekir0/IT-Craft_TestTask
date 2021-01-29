@@ -44,7 +44,7 @@ namespace Api.MSsql
             return entity.UserId;
         }
 
-        public async Task UpdateAsync(Guid id, Users updatedUsers)
+        public async Task<Users> UpdateAsync(Guid id, Users updatedUsers)
         {
             var entity = await context.UsersEntities.SingleOrDefaultAsync(x => x.UserId == updatedUsers.Id);
 
@@ -52,6 +52,8 @@ namespace Api.MSsql
 
             context.UsersEntities.Update(entity);
             await context.SaveChangesAsync();
+
+            return entity == null ? null : ToDomain(entity);
         }
 
         public async Task DeleteAsync(Guid id)
