@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -40,6 +41,12 @@ namespace Api.Web
 
                 options.IncludeXmlComments(XmlPathProvider.XmlPath);
             });
+
+            var connection = @"Server=DESKTOP-FQ83PKI;Database=Reactions;Trusted_Connection=True;";
+
+            services.AddDbContext<MSsqlContext>(options =>
+              options.UseSqlServer(
+              connection, b => b.MigrationsAssembly("GhostNetwork.Reactions.MSsql")));
 
             services.AddScoped<IUsersStorage, MSsqlUsersStorage>();
             services.AddScoped<IUsersService, UsersService>();

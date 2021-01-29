@@ -24,10 +24,9 @@ namespace Api.Web.Controllers
         /// <summary>
         /// Get all users
         /// </summary>
-        /// <param name="id">user id</param>
         /// <response code="200">Returns all users</response>
         /// <response code="404">user not found</response>
-        [HttpGet("{id}")]
+        [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Users>> GetAsync()
@@ -36,7 +35,7 @@ namespace Api.Web.Controllers
 
             if (users == null)
             {
-                return BadRequest();
+                return NotFound();
             }
 
             return Ok(users);
