@@ -42,6 +42,7 @@ namespace Api.Web
             });
 
             services.AddScoped<IUsersStorage, MSsqlUsersStorage>();
+            services.AddScoped<IUsersService, UsersService>();
             services.AddScoped<IValidator<UsersContext>, UsersValidator>();
         }
 
