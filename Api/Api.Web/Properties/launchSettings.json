@@ -6,7 +6,11 @@
       "launchBrowser": true,
       "launchUrl": "http://localhost:5000/swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "MSSQL_ADDRESS": "localhost",
+        "MSSQL_PORT": "1433",
+        "MSSQL_USER": "SA",
+        "MSSQL_PASSWORD": "Pass1234"
       }
     }
   }

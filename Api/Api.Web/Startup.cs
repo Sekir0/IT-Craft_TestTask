@@ -46,7 +46,12 @@ namespace Api.Web
 
             services.AddDbContext<MSsqlContext>(options =>
               options.UseSqlServer(
-              connection, b => b.MigrationsAssembly("Api.MSsql")));
+              connection, b => b.MigrationsAssembly(typeof(MSsqlContext).Assembly.FullName)));
+
+            //For docker container db
+            /*services.AddDbContext<MSsqlContext>(options => options
+                .UseSqlServer(MssqlConnectionString(), b => b.MigrationsAssembly(typeof(MSsqlContext).Assembly.FullName)));
+            */
 
             services.AddScoped<IUsersStorage, MSsqlUsersStorage>();
             services.AddScoped<IUsersService, UsersService>();
@@ -72,6 +77,11 @@ namespace Api.Web
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private string MssqlConnectionString()
+        {
+            return $"Server={Configuration["MSSQL_ADDRESS"]},{Configuration["MSSQL_PORT"]};Database=Reaction;User={Configuration["MSSQL_USER"]};Password={Configuration["MSSQL_PASSWORD"]}";
         }
     }
 }
