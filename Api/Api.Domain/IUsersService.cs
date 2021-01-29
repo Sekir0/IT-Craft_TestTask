@@ -12,7 +12,7 @@ namespace Api.Domain
 
         Task<Users> GetByIdAsync(Guid id);
 
-        Task<(DomainResult, string)> CreateAsync(string name, bool active);
+        Task<(DomainResult, Guid)> CreateAsync(string name, bool active);
 
         Task UpdateAsync(Guid id, bool active);
 
@@ -21,29 +21,61 @@ namespace Api.Domain
 
     public class UsersService : IUsersService
     {
-        public Task<(DomainResult, string)> CreateAsync(string name, bool active)
+        private readonly IUsersStorage usersStorage;
+        private readonly IValidator<UsersContext> usersValidator;
+
+        public UsersService(
+            IUsersStorage usersStorage,
+            IValidator<UsersContext> usersValidator)
         {
-            throw new NotImplementedException();
+            this.usersStorage = usersStorage;
+            this.usersValidator = usersValidator;
         }
 
-        public Task DeleteAsync(Guid id)
+        public async Task<IEnumerable<Users>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await usersStorage.FindManyAsync();
         }
 
-        public Task<IEnumerable<Users>> GetAllAsync()
+        public async Task<Users> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var result = await usersStorage.GetByIdAsync(id);
+
+            return result;
         }
 
-        public Task<Users> GetByIdAsync(Guid id)
+        public async Task<(DomainResult, Guid)> CreateAsync(string name, bool active)
         {
-            throw new NotImplementedException();
+            var result = usersValidator.Validate(new UsersContext(name));
+            if (!result.Successed)
+            {
+                return (result, default);
+            }
+
+            var user = new Users(Guid.NewGuid(), name, false);
+
+            var userId = await usersStorage.InsertAsync(user);
+
+            return (DomainResult.Success(), userId);
         }
 
-        public Task UpdateAsync(Guid id, bool active)
+        public async Task UpdateAsync(Guid id, bool active)
         {
-            throw new NotImplementedException();
+            var user = await usersStorage.GetByIdAsync(id);
+
+            if (user == null)
+            {
+                return;
+            }
+
+            user.Update(active);
+
+            await usersStorage.UpdateAsync(id, user);
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            await usersStorage.DeleteAsync(id);
         }
     }
 }

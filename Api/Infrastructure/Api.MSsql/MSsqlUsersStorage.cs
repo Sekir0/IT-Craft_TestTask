@@ -17,7 +17,7 @@ namespace Api.MSsql
             this.context = context;
         }
 
-        public async Task<Users> GetUserByIdAsync(Guid id)
+        public async Task<Users> GetByIdAsync(Guid id)
         {
             var entity = await context.UsersEntities.SingleOrDefaultAsync(x => x.UserId == id);
             return entity == null ? null : ToDomain(entity);

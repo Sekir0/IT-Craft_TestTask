@@ -9,7 +9,7 @@ namespace Api.Domain
     {
         Task<IEnumerable<Users>> FindManyAsync();
 
-        Task<Users> GetUserByIdAsync(Guid id);
+        Task<Users> GetByIdAsync(Guid id);
 
         Task<Guid> InsertAsync(Users users);
 

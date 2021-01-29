@@ -18,9 +18,8 @@ namespace Api.Domain
         public bool Active { get; private set; }
 
 
-        public void Update(string name, bool active)
+        public void Update(bool active)
         {
-            Name = name;
             Active = active;
         }
     }
