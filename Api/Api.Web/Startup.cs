@@ -46,7 +46,7 @@ namespace Api.Web
 
             services.AddDbContext<MSsqlContext>(options =>
               options.UseSqlServer(
-              connection, b => b.MigrationsAssembly("GhostNetwork.Reactions.MSsql")));
+              connection, b => b.MigrationsAssembly("Api.MSsql")));
 
             services.AddScoped<IUsersStorage, MSsqlUsersStorage>();
             services.AddScoped<IUsersService, UsersService>();
