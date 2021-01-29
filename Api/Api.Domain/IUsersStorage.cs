@@ -7,7 +7,7 @@ namespace Api.Domain
 {
     public interface IUsersStorage
     {
-        Task<(IEnumerable<Users>, long)> FindManyAsync(int skip, int take);
+        Task<IEnumerable<Users>> FindManyAsync();
 
         Task<Users> GetUserByIdAsync(Guid id);
 

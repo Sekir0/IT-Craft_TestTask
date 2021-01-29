@@ -10,7 +10,6 @@ namespace Api.MSsql
         [Key]
         public Guid UserId { get; set; }
 
-        [StringLength(500, ErrorMessage = "Max length 500!")]
         public string Name { get; set; }
 
         public bool Active { get; set; }

@@ -1,6 +1,8 @@
 ﻿using Api.Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,29 +17,56 @@ namespace Api.MSsql
             this.context = context;
         }
 
-        public Task DeleteAsync(Guid id)
+        public async Task<Users> GetUserByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = await context.UsersEntities.SingleOrDefaultAsync(x => x.UserId == id);
+            return entity == null ? null : ToDomain(entity);
         }
 
-        public Task<(IEnumerable<Users>, long)> FindManyAsync(int skip, int take)
+        public async Task<IEnumerable<Users>> FindManyAsync()
         {
-            throw new NotImplementedException();
+            var entities = await context.UsersEntities.ToListAsync();
+            return entities.Select(ToDomain).ToList();
         }
 
-        public Task<Users> GetUserByIdAsync(Guid id)
+        public async Task<Guid> InsertAsync(Users users)
         {
-            throw new NotImplementedException();
+            var entity = new UsersEntity
+            {
+                UserId = users.Id,
+                Name = users.Name,
+                Active = users.Active
+            };
+
+            await context.AddAsync(entity);
+            await context.SaveChangesAsync();
+
+            return entity.UserId;
         }
 
-        public Task<Guid> InsertAsync(Users users)
+        public async Task UpdateAsync(Guid id, Users updatedUsers)
         {
-            throw new NotImplementedException();
+            var entity = await context.UsersEntities.SingleOrDefaultAsync(x => x.UserId == updatedUsers.Id);
+
+            entity.Active = updatedUsers.Active;
+
+            context.UsersEntities.Update(entity);
+            await context.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(Guid id, Users updatedUsers)
+        public async Task DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var entity = await context.UsersEntities.SingleOrDefaultAsync(x => x.UserId == id);
+            context.UsersEntities.Remove(entity);
+            await context.SaveChangesAsync();
+        }
+
+        private static Users ToDomain(UsersEntity entity)
+        {
+            return new Users(
+                entity.UserId,
+                entity.Name,
+                entity.Active);
         }
     }
 }

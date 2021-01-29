@@ -4,6 +4,8 @@ namespace Api.MSsql
 {
     public class MSsqlContext : DbContext
     {
+        public DbSet<UsersEntity> UsersEntities { get; set; }
+
         public MSsqlContext(DbContextOptions<MSsqlContext> options) : base(options)
         {
         }
@@ -11,7 +13,5 @@ namespace Api.MSsql
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }
-
-        DbSet<UsersEntity> UsersEntities { get; set; }
     }
 }
