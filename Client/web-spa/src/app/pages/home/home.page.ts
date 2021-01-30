@@ -1,3 +1,5 @@
+import { Users } from './../../modules/users-api/model/users';
+import { UsersService } from './../../modules/users-api/api/users.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  public users: Users;
+
+  constructor(private usersService: UsersService) { }
 
   ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  public loadUsers(): void {
+    this.usersService.usersGet().subscribe(resp => {
+      this.users = resp;
+    })
   }
 
 }
