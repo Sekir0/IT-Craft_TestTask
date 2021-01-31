@@ -12,8 +12,8 @@
 
 
 export interface Users {
-    readonly id: string;
-    readonly name: string;
-    readonly active: boolean;
+    id: string;
+    name: string;
+    active: boolean;
 }
 

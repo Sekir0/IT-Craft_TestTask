@@ -3,7 +3,6 @@ import { Users } from './../model/users';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +21,9 @@ export class UsersService {
     return this.httpClient.get(`${this.basePath}/${user.id}`);
   }
 
-  public updateUser(updateUser: Users) {
-    return this.httpClient.put(`${this.basePath}/${updateUser.id}`, {
-      active: updateUser.active
+  public updateUser(user: Users) {
+    return this.httpClient.put(`${this.basePath}/${user.id}`, {
+      active: user.active
     });
   }
 }

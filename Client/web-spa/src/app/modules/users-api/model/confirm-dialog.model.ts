@@ -1,3 +1,4 @@
+import { Users } from './users';
 export class ConfirmDialogModel {
-  constructor(public title: string, public message: string) {}
+  constructor(public user: Users) {}
 }

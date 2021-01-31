@@ -11,18 +11,17 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+
 import { HomePage } from './home.page';
 import { UsersTablesComponent } from './components/users-table/users-tables.component';
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { UsersListComponent } from './components/users-list/users-list.component'
+import { GetStatsComponent } from './components/get-stats/get-stats.component';
 
 
 @NgModule({
   declarations: [
     HomePage,
     UsersTablesComponent,
-    ConfirmDialogComponent,
-    UsersListComponent
+    GetStatsComponent
   ],
   imports: [
     CommonModule,
