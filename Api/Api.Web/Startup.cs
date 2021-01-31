@@ -3,16 +3,11 @@ using Api.MSsql;
 using Api.Web.Helpers.OpenApi;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
 
 namespace Api.Web
 {
@@ -66,9 +61,10 @@ namespace Api.Web
                     .UseSwagger()
                     .UseSwaggerUI(config => { config.SwaggerEndpoint("/swagger/v1/swagger.json", "Profiles Api V1"); });
 
-                app.UseCors(builder => builder.AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowAnyOrigin());
+                app.UseCors(builder => builder
+                    .WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
             }
 
             app.UseRouting();
@@ -81,7 +77,7 @@ namespace Api.Web
 
         private string MssqlConnectionString()
         {
-            return $"Server={Configuration["MSSQL_ADDRESS"]},{Configuration["MSSQL_PORT"]};Database=Reaction;User={Configuration["MSSQL_USER"]};Password={Configuration["MSSQL_PASSWORD"]}";
+            return $"Server={Configuration["MSSQL_ADDRESS"]},{Configuration["MSSQL_PORT"]};Database=Users;User={Configuration["MSSQL_USER"]};Password={Configuration["MSSQL_PASSWORD"]}";
         }
     }
 }
