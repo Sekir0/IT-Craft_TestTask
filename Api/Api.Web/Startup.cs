@@ -81,7 +81,7 @@ namespace Api.Web
 
         private string MssqlConnectionString()
         {
-            return $"Server={Configuration["MSSQL_ADDRESS"]},{Configuration["MSSQL_PORT"]};Database=Reaction;User={Configuration["MSSQL_USER"]};Password={Configuration["MSSQL_PASSWORD"]}";
+            return $"Server={Configuration["MSSQL_ADDRESS"]},{Configuration["MSSQL_PORT"]};Database=Users;User={Configuration["MSSQL_USER"]};Password={Configuration["MSSQL_PASSWORD"]}";
         }
     }
 }
