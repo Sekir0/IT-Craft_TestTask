@@ -1,5 +1,4 @@
-import { Users } from './../../../../modules/users-api/model/users';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-users-list',
@@ -7,11 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./users-list.component.scss']
 })
 export class UsersListComponent {
-
-  public displayedColumns: string[] = ['id', 'name', 'active'];
-
-  @Input()
-  public users: Users;
 
   constructor() { }
 

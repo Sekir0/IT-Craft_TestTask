@@ -26,5 +26,4 @@ export class HomePage implements OnInit {
   public onPublished(user: Users): void {
     this.loadUsers();
   }
-
 }

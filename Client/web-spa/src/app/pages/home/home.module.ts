@@ -12,15 +12,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { HomePage } from './home.page';
-import { UsersListComponent } from './components/users-list/users-list.component';
+import { UsersTablesComponent } from './components/users-table/users-tables.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { UsersListComponent } from './components/users-list/users-list.component'
 
 
 @NgModule({
   declarations: [
     HomePage,
-    UsersListComponent,
-    ConfirmDialogComponent
+    UsersTablesComponent,
+    ConfirmDialogComponent,
+    UsersListComponent
   ],
   imports: [
     CommonModule,
