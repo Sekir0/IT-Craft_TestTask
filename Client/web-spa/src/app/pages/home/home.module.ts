@@ -7,13 +7,20 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 import { HomePage } from './home.page';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+
 
 @NgModule({
   declarations: [
     HomePage,
-    UsersListComponent
+    UsersListComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +29,11 @@ import { UsersListComponent } from './components/users-list/users-list.component
     MatPaginatorModule,
     MatButtonModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatCardModule
   ]
 })
 export class HomeModule { }

@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  public users: Users;
+  public users: Users[] = [];
 
   constructor(private usersService: UsersService) { }
 
@@ -18,9 +18,13 @@ export class HomePage implements OnInit {
   }
 
   public loadUsers(): void {
-    this.usersService.usersGet().subscribe(resp => {
+    this.usersService.getUsers().subscribe(resp => {
       this.users = resp;
     })
+  }
+
+  public onPublished(user: Users): void {
+    this.loadUsers();
   }
 
 }
