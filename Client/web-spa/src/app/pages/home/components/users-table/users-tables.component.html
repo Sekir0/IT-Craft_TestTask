@@ -16,7 +16,8 @@
         <th mat-header-cell *matHeaderCellDef> Active </th>
         <td mat-cell *matCellDef="let element">
           <section>
-            <mat-checkbox [(ngModel)]="element.active">
+            <mat-checkbox [(ngModel)]="element.active"
+                          (change)="updateUserActive(element)">
             </mat-checkbox>
           </section>
         </td>

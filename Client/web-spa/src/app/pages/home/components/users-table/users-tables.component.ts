@@ -26,4 +26,11 @@ export class UsersTablesComponent {
       data: this.users
     });
   }
+
+  public updateUserActive(user: Users){
+    this.usersService.updateUser(user)
+    .subscribe(resp => {
+      this.users.active = user.active;
+    });
+  }
 }
