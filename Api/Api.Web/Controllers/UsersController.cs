@@ -73,7 +73,7 @@ namespace Api.Web.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> CreateAsync([FromBody] UserCreateViewModel createModel)
         {
-            var (result, id) = await usersService.CreateAsync(createModel.Name, createModel.Active);
+            var (result, id) = await usersService.CreateAsync(createModel.Name);
 
             if (result.Successed)
             {

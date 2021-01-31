@@ -12,7 +12,7 @@ namespace Api.Domain
 
         Task<Users> GetByIdAsync(Guid id);
 
-        Task<(DomainResult, Guid)> CreateAsync(string name, bool active);
+        Task<(DomainResult, Guid)> CreateAsync(string name);
 
         Task<Users> UpdateAsync(Guid id, bool active);
 
@@ -44,7 +44,7 @@ namespace Api.Domain
             return result;
         }
 
-        public async Task<(DomainResult, Guid)> CreateAsync(string name, bool active)
+        public async Task<(DomainResult, Guid)> CreateAsync(string name)
         {
             var result = usersValidator.Validate(new UsersContext(name));
             if (!result.Successed)
