@@ -61,9 +61,10 @@ namespace Api.Web
                     .UseSwagger()
                     .UseSwaggerUI(config => { config.SwaggerEndpoint("/swagger/v1/swagger.json", "Profiles Api V1"); });
 
-                app.UseCors(builder => builder.AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowAnyOrigin());
+                app.UseCors(builder => builder
+                    .WithOrigins("http://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
             }
 
             app.UseRouting();
