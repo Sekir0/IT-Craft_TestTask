@@ -1,4 +1,6 @@
 # WebSpa
+В проекте в целом все работает, но есть баг в get-stats.component, в get методе get-active() пофиксить можно если закомитить метод, запустить проект и розкомитить метод.
+Пофиксить не успел т.к. умер ПК =(
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
 
