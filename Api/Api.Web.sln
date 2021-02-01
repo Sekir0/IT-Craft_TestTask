@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.MSsql", "Infrastructure\Api.MSsql\Api.MSsql.csproj", "{193CA75C-6266-4DB7-AE79-A3B3653118F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.UnitTest", "Api.UnitTest\Api.UnitTest.csproj", "{03E57B58-48A1-4D27-8A30-E7F76E96EF93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{CDBEC66C-61EB-4C32-B26D-483D46BD020B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +31,10 @@ Global
 		{193CA75C-6266-4DB7-AE79-A3B3653118F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{193CA75C-6266-4DB7-AE79-A3B3653118F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{193CA75C-6266-4DB7-AE79-A3B3653118F9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{03E57B58-48A1-4D27-8A30-E7F76E96EF93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{03E57B58-48A1-4D27-8A30-E7F76E96EF93}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{03E57B58-48A1-4D27-8A30-E7F76E96EF93}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{03E57B58-48A1-4D27-8A30-E7F76E96EF93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDBEC66C-61EB-4C32-B26D-483D46BD020B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDBEC66C-61EB-4C32-B26D-483D46BD020B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDBEC66C-61EB-4C32-B26D-483D46BD020B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDBEC66C-61EB-4C32-B26D-483D46BD020B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
